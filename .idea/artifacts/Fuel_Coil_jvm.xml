@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="Fuel-Coil-jvm">
+    <output-path>$PROJECT_DIR$/build/libs</output-path>
+    <root id="archive" name="Fuel-Coil-jvm.jar">
+      <element id="module-output" name="Fuel-Coil.jvmMain" />
+    </root>
+  </artifact>
+</component>
