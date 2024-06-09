@@ -5,11 +5,9 @@ import coil3.network.NetworkClient
 import coil3.network.NetworkHeaders
 import coil3.network.NetworkRequest
 import coil3.network.NetworkResponse
-import coil3.network.NetworkResponseBody
 import fuel.Fuel
 import fuel.HttpResponse
 import fuel.method
-import okio.Buffer
 import kotlin.jvm.JvmInline
 
 @OptIn(ExperimentalCoilApi::class)
@@ -32,15 +30,7 @@ internal value class FuelNetworkClient(
 }
 
 @OptIn(ExperimentalCoilApi::class)
-private fun HttpResponse.toNetworkResponse(request: NetworkRequest): NetworkResponse {
-    return NetworkResponse(
-        request = request,
-        code = statusCode,
-        //headers = headers.toNetworkHeaders(),
-        body = NetworkResponseBody(Buffer().apply { writeUtf8(body) } ),
-        delegate = this,
-    )
-}
+expect fun HttpResponse.toNetworkResponse(request: NetworkRequest): NetworkResponse
 
 @OptIn(ExperimentalCoilApi::class)
 private fun NetworkHeaders.toHeaders(): Map<String, String> {
@@ -53,11 +43,11 @@ private fun NetworkHeaders.toHeaders(): Map<String, String> {
     return headers
 }
 
-/*@OptIn(ExperimentalCoilApi::class)
-private fun Map<String, String>.toNetworkHeaders(): NetworkHeaders {
+@OptIn(ExperimentalCoilApi::class)
+fun Map<String, String>.toNetworkHeaders(): NetworkHeaders {
     val headers = NetworkHeaders.Builder()
     for ((key, values) in this) {
         headers.add(key, values)
     }
     return headers.build()
-}*/
+}
