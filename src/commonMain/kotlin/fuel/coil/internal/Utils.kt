@@ -1,6 +1,5 @@
 package fuel.coil.internal
 
-import coil3.annotation.ExperimentalCoilApi
 import coil3.network.NetworkClient
 import coil3.network.NetworkHeaders
 import coil3.network.NetworkRequest
@@ -10,7 +9,6 @@ import fuel.HttpResponse
 import fuel.method
 import kotlin.jvm.JvmInline
 
-@OptIn(ExperimentalCoilApi::class)
 @JvmInline
 internal value class FuelNetworkClient(
     private val fuel: Fuel,
@@ -29,10 +27,8 @@ internal value class FuelNetworkClient(
     }
 }
 
-@OptIn(ExperimentalCoilApi::class)
 expect fun HttpResponse.toNetworkResponse(request: NetworkRequest): NetworkResponse
 
-@OptIn(ExperimentalCoilApi::class)
 private fun NetworkHeaders.toHeaders(): Map<String, String> {
     val headers = mutableMapOf<String, String>()
     for ((key, values) in asMap()) {
@@ -43,7 +39,6 @@ private fun NetworkHeaders.toHeaders(): Map<String, String> {
     return headers
 }
 
-@OptIn(ExperimentalCoilApi::class)
 fun Map<String, String>.toNetworkHeaders(): NetworkHeaders {
     val headers = NetworkHeaders.Builder()
     for ((key, values) in this) {

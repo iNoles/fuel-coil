@@ -19,7 +19,4 @@ fun FuelNetworkFetcherFactory(fuel: Fuel) = NetworkFetcher.Factory(
     cacheStrategy = { CacheStrategy() },
 )
 
-@OptIn(ExperimentalCoilApi::class)
-fun Fuel.asNetworkClient(): NetworkClient {
-    return FuelNetworkClient(this)
-}
+fun Fuel.asNetworkClient(): NetworkClient = FuelNetworkClient(this)
