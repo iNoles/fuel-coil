@@ -19,7 +19,7 @@ kotlin {
         commonMain {
             dependencies {
                 implementation("com.github.kittinunf.fuel:fuel:3.0.0-alpha04")
-                implementation("io.coil-kt.coil3:coil-network-core:3.0.1")
+                implementation("io.coil-kt.coil3:coil-network-core:3.0.2")
             }
         }
         commonTest {
